@@ -1,0 +1,606 @@
+*
+{
+margin:0;
+padding:0;
+box-sizing: border-box;
+}
+html,body
+{
+height:100%;
+width:100%;
+background-image: repeating-linear-gradient(0deg, rgb(41, 41, 41) 0px, rgb(41, 41, 41) 1px,transparent 1px, transparent 21px),repeating-linear-gradient(90deg, rgb(41, 41, 41) 0px, rgb(41, 41, 41) 1px,transparent 1px, transparent 21px),linear-gradient(90deg, hsl(87,0%,9%),hsl(87,0%,9%));
+color: whitesmoke;
+}
+
+#containerdiv {
+    height: 100%;
+    width: 100%;
+    color: whitesmoke;
+  }
+
+  #navcontainer
+{
+   background-color: #0B0B0E;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Retrolight', sans-serif;
+}
+ #left{
+  margin:5px;
+  font-family: 'Retrolight', sans-serif;
+ }
+#nav-items {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5px;
+    margin-right: 30px;
+    padding: 10px;
+    font-size: larger;
+    color: whitesmoke;
+    font-family: 'Retrolight', sans-serif;       
+    cursor:pointer                                     
+  }
+
+  #nav-items p {
+    position: relative;
+    display: inline-block;
+    color: whitesmoke;
+    background: linear-gradient(to right, #7ed957 0%, #7ed957 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: whitesmoke;
+    transition: background-size 1s ease;
+    font-family: 'Retrolight', sans-serif;
+  }
+  
+  #nav-items p:hover {
+    background-size: 100% 100%;
+    -webkit-text-fill-color: transparent; 
+  }
+  
+  #nav-items h4
+  {
+    font-family: Jaini;
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    color: whitesmoke;
+    background: linear-gradient(to right, #7ed957 0%, #7ed957 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: whitesmoke;
+    transition: background-size 1s ease;
+  }
+  #nav-items h4:hover
+  {
+    background-size: 100% 100%;
+    -webkit-text-fill-color: transparent;
+  }
+  #nav-items img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: fill;
+    border: 2px solid white; 
+    margin-left: 10px;
+    cursor: pointer;
+
+  }
+  
+  
+  .footer{
+    background-color:#1a1a1a;
+    color:#ffffff;
+    padding:24px 16px;
+    text-align:center;
+  }
+  
+  .footer-content {
+    max-width:1200px;
+    margin:0 auto;
+  }
+  
+  .footer-message {
+    font-size:18px;
+    margin-bottom:8px;
+  }
+  
+  .footer-copy {
+    font-size:14px;
+    color:#aaaaaa;
+  }
+    #formdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    margin-top: 30px;;
+    }
+
+  #form {
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background-color: black;
+  }
+
+  #form h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    color: #f2f2f2;
+  }
+  
+  .inputauth {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inputauth:focus {
+    background-color: #3a3a3a;
+    outline: none;
+  }
+  
+  #authbutton {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #7ed957;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Retrolight', sans-serif;
+    cursor: pointer;
+    color: transparent;
+    background-image: linear-gradient(to right, #7ed957, white, #7ed957);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-size 0.7s ease;
+  }
+  
+  #authbutton:hover {
+    background-size: 100% 100%;
+  }
+  
+
+  #signoutbtn {
+    padding: 10px 24px;
+    border: 2px solid #7ed957;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Retrolight', sans-serif;
+    cursor: pointer;
+    margin-left: 10px;
+    color: transparent;
+    background-image: linear-gradient(to right, #7ed957, white, #7ed957);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-size 0.7s ease;
+  }
+  
+  #signoutbtn:hover {
+    background-size: 100% 100%; 
+  }
+
+  #signupdiv {
+    margin-top: 12px;
+    cursor: pointer;
+  }
+ .user-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.user-card {
+  background-color: #121212;
+  border: 1px solid #333;
+  padding: 1.2rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-4px);
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #7ed957;
+  margin-bottom: 1rem;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.user-email {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.send-btn {
+  padding: 8px 16px;
+  border: 2px solid #7ed957;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: transparent;
+  background-image: linear-gradient(to right, #7ed957, white, #7ed957);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-size 0.5s ease;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-size: 100% 100%;
+}
+
+.balance-card {
+  background-color: #0d0d0d;
+  border: 2px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 15px 30px;
+  margin: 2rem auto;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-4px);
+}
+
+.balance-title {
+  font-size: 20px;
+  font-family: 'Retrolight', sans-serif;
+  color: #ffffffcc;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.balance-amount {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7ed957, white, #7ed957);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.balance-error {
+  color: #ff4c4c;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+#editProfileFormDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); 
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: white;
+  }
+  
+  #editProfileForm {
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background-color: black;
+  }
+  
+  #editProfileForm h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    color: #f2f2f2;
+  }
+  
+  .inputauth {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inputauth:focus {
+    background-color: #3a3a3a;
+    outline: none;
+  }
+  
+  #editProfileButton {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #7ed957;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: transparent;
+    background-image: linear-gradient(to right, #7ed957, white, #7ed957);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-size 0.7s ease;
+  }
+  
+  #editProfileButton:hover {
+    background-size: 100% 100%;
+  }
+  
+  .edit-profile-wrapper {
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .edit-profile-card {
+    width: 300px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    background-color: #1e1e1e;
+    text-align: center;
+    color: whitesmoke;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  .edit-profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: fill;
+    margin-bottom: 12px;
+    border: 2px solid #7ed957;
+  }
+  
+  .edit-profile-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Retrolight', sans-serif;
+  }
+
+  #editprofilepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.edit-profile-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%; 
+}
+
+.edit-profile-form {
+  flex: 1;
+  max-width: 600px;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-form h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.inputauth {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#editProfileButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#editProfileButton:hover {
+  background-color: #45a049;
+}
+
+.edit-profile-card-container {
+  flex: 1;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-profile-card {
+  text-align: center;
+}
+
+.edit-profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: fill;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.edit-profile-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.edit-profile-meta {
+  margin-bottom: 10px;
+}
+
+.edit-profile-meta-badge {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.edit-profile-skill-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.edit-profile-actions {
+  margin-top: 20px;
+}
+
+.edit-profile-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.send-container {
+  max-width: 400px;
+  margin: 6rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.send-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #f1f1f1;
+}
+
+.inputauth {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f0f0f0;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.inputauth:focus {
+  border-color: #00bcd4;
+}
+
+.send-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.send-btn:hover {
+  background-color: #0097a7;
+}
+
+.send-error {
+  color: #ff5252;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.send-success {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+#Goto {
+  margin-top: 16px;
+  color: #7ed957;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+#Goto:hover {
+  color: white;
+  transform: scale(1.05);
+  text-decoration: underline;
+}
