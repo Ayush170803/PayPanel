@@ -9,7 +9,23 @@ const validator = require("validator");
 const Account = require('../models/account');
 const Otp = require('../models/otp');
 const nodemailer = require("nodemailer");
+const { rateLimit } = require('express-rate-limit')
+const FormData = require('form-data');
+const fetch = require('node-fetch');
 
+const otpLimiter = rateLimit({
+    windowMs: 5*60*1000,
+    limit:10,
+    standardHeaders:'draft-8',
+    legacyHeaders:false
+})
+
+const passwordLimiter = rateLimit({
+    windowMs: 5*60*1000,
+    limit:5,
+    standardHeaders:'draft-8',
+    legacyHeaders:false
+})
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth:{
@@ -180,17 +196,36 @@ userRouter.get('/find', userauth, async (req,res)=>
     }
 })
 
-userRouter.post('/send-otp',async (req,res)=>
+userRouter.post('/send-otp',otpLimiter,async (req,res)=>
 {
     try
     {
-        const {emailId} = req.body;
+        const {emailId,captchaToken} = req.body;
         if(!emailId){
             return res.status(400).json({error:"Email is required"});
         }
         const otp = generateOTP();
         const expiresAt = new Date(Date.now() + 5*60*1000);
         
+        let formData = new FormData();
+
+            formData.append('secret', process.env.SECRET_KEY);
+            formData.append('response', captchaToken);
+
+        const url='https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+            const result = await fetch(url, {
+                body: formData,
+                method: 'POST',
+                headers: formData.getHeaders(),
+            });
+            console.log(result);
+        const challengeSucceeded=(await result.json()).success;
+
+        if (!challengeSucceeded) {
+            return res.status(403).json({ message: "Invalid reCAPTCHA token" });
+        }
+
         await Otp.deleteMany({emailId});
         await Otp.create({emailId,otp,expiresAt});
 
@@ -207,7 +242,7 @@ userRouter.post('/send-otp',async (req,res)=>
                 <p><strong>Note:</strong> It will expire in 5 minutes.</p>
 
                 <br/>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/PayBoard.png" alt="PayPanel" width="150" height="150"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PayPanel.png" alt="PayPanel" width="150" height="150"/>
             `
         }
         await transporter.sendMail(mailing);
@@ -239,7 +274,7 @@ userRouter.post('/verify-otp', async (req,res)=>
     }
 })
 
-userRouter.post('/update-password', async (req,res)=>
+userRouter.post('/update-password', passwordLimiter,async (req,res)=>
 {
     try{
         const {emailId,newPassword} = req.body;

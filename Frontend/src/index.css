@@ -604,3 +604,7 @@ color: whitesmoke;
   transform: scale(1.05);
   text-decoration: underline;
 }
+
+#captcha{
+  margin-top: 10px;
+}
