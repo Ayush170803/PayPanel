@@ -5,6 +5,9 @@ const connectdb = require('./Config/database');
 const cookieParser = require('cookie-parser');
 const mainRouter = require("./Routes/index");
 const cors = require('cors');
+const {Timetaken} = require('./Middlewares/Timetaken');
+const client = require("prom-client");
+const { metricsMiddleware } = require('./metrics/index.js');
 
 
 app.use(cors({
@@ -13,9 +16,19 @@ app.use(cors({
 }));
 app.use(express.json()); 
 app.use(cookieParser());
+app.use(Timetaken);
+app.use(metricsMiddleware);
 
 
 app.use('/api/v1',mainRouter);
+
+app.get("/metrics",async (req, res)=>
+{
+    const metrics=await client.register.metrics();
+    res.set('Content-Type',client.register.contentType);
+    res.end(metrics);
+})
+
 
 
 connectdb().then(()=>{
