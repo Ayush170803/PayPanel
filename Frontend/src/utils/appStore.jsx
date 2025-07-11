@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from './userSlice'
 import balanceReducer from "./balanceSlice"
+import transactionReducer from "./transactionSlice";
 
 const loadUserFromLocalStorage = () => {
   try
@@ -27,16 +28,25 @@ const loadBalanceFromLocalStorage = () => {
   }
 };
 
-
+const loadTransactionsFromLocalStorage = () => {
+  try {
+    const data = localStorage.getItem("transactions");
+    return data ? JSON.parse(data) : [];
+  } catch (e) {
+    return [];
+  }
+};
 
 const appStore = configureStore({
      reducer:{
       user:userReducer,
       balance:balanceReducer,
+      transactions: transactionReducer,
      },
   preloadedState: {
     user: loadUserFromLocalStorage(), 
-    balance:loadBalanceFromLocalStorage()
+    balance:loadBalanceFromLocalStorage(),
+    transactions: loadTransactionsFromLocalStorage(),
   },
 })
 export default appStore;

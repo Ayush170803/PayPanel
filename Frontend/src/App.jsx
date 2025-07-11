@@ -9,6 +9,7 @@ import appStore from "./utils/appStore";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Profile from "./component/Profile";
 import ForgotPassword from "./component/ForgotPassword";
+import Transactions from "./component/Transactions";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route index element={ <ProtectedRoute> <Dashboard /> </ProtectedRoute> }/>
       <Route path="send" element={<ProtectedRoute> <Send /> </ProtectedRoute> }/>
       <Route path="profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute> }/>
+      <Route path="transactions" element={<ProtectedRoute><Transactions /></ProtectedRoute>}/>
         </Route>
       </Routes>
       </BrowserRouter>
