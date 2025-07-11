@@ -22,7 +22,7 @@ const Login = () => {
       const res = await axios.post(
         "http://localhost:3000/api/v1/user/signin",
         { emailId, password },
-        { withCredentials: true } // send cookies across domains
+        { withCredentials: true } 
       );
       if(res.data && res.data.user)
       {

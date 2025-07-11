@@ -1,7 +1,7 @@
-import Login from "./Component/Login";
-import Send from "./Component/Send";
-import Dashboard from "./Component/Dashboard";
-import Body from "./Component/Body";
+import Login from "./component/Login";
+import Send from "./component/Send";
+import Dashboard from "./component/Dashboard";
+import Body from "./component/Body";
 
 import { BrowserRouter, Routes , Route} from "react-router-dom";
 import {Provider} from "react-redux";
