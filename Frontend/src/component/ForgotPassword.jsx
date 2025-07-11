@@ -17,7 +17,7 @@ const ForgotPassword=()=>{
  {
     try
     {
-      await axios.post('http://localhost:3000/api/v1/user/send-otp',{emailId,captchaToken},{withCredentials:true});
+     await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/send-otp`, { emailId, captchaToken }, { withCredentials: true });
       setStep(2);
       setError('');
     }
@@ -31,7 +31,7 @@ const ForgotPassword=()=>{
   {
     try
     {
-      await axios.post('http://localhost:3000/api/v1/user/verify-otp',{emailId,otp},{withCredentials:true});
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/verify-otp`, { emailId, otp }, { withCredentials: true });
       setStep(3);
       setError('');
     }
@@ -45,7 +45,7 @@ const ForgotPassword=()=>{
   {
     try
     {
-      const res=await axios.post('http://localhost:3000/api/v1/user/update-password',{emailId,newPassword},{withCredentials:true});
+      const res=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/update-password`, { emailId, newPassword }, { withCredentials: true });
       if(res.data.message==='Invalid Password Format')
       {
         setError('Please enter a strong password (min 8 chars, uppercase, lowercase, number & symbol)');

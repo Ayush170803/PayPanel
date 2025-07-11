@@ -20,9 +20,9 @@ const Login = () => {
     try
     {
       const res = await axios.post(
-        "http://localhost:3000/api/v1/user/signin",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signin`,
         { emailId, password },
-        { withCredentials: true } 
+        { withCredentials: true }
       );
       if(res.data && res.data.user)
       {
@@ -52,7 +52,12 @@ const Login = () => {
     {
       try
       {
-        const res = await axios.post("http://localhost:3000/api/v1/user/signup",{firstName,lastName,emailId,password},{withCredentials:true});
+     const res = await axios.post(
+  `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signup`,
+  { firstName, lastName, emailId, password },
+  { withCredentials: true }
+);
+
         dispatch(addUser(res.data.data));
         localStorage.setItem("user", JSON.stringify(res.data.data));
         return navigate('/');
