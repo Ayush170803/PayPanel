@@ -9,9 +9,8 @@ const {Timetaken} = require('./Middlewares/Timetaken');
 const client = require("prom-client");
 const { metricsMiddleware } = require('./metrics/index.js');
 
-
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
     credentials:true
 }));
 app.use(express.json()); 
