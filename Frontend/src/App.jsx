@@ -10,6 +10,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import Profile from "./component/Profile";
 import ForgotPassword from "./component/ForgotPassword";
 import Transactions from "./component/Transactions";
+import GrafanaDashboard from "./component/GrafanaDashboard";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="send" element={<ProtectedRoute> <Send /> </ProtectedRoute> }/>
       <Route path="profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute> }/>
       <Route path="transactions" element={<ProtectedRoute><Transactions /></ProtectedRoute>}/>
+      <Route path="/metrics" element={<ProtectedRoute><GrafanaDashboard /></ProtectedRoute>}/>
         </Route>
       </Routes>
       </BrowserRouter>

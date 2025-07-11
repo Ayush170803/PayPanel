@@ -30,7 +30,7 @@ color: whitesmoke;
   font-family: 'Retrolight', sans-serif;
  }
 #nav-items {
-    width: 50%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
     align-items: center;

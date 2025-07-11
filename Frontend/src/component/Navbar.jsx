@@ -31,6 +31,7 @@ const Navbar = () => {
         </div>
           <div id="nav-items">
             <Link to="/transactions"><p>Transactions</p></Link>
+            <Link to="/metrics"><p>Metrics</p></Link>
             <Link to="/profile"><p>Profile</p></Link>
             <button onClick={handlelogout} id='signoutbtn'>Logout</button>
             <h4>Welcome, {user.firstName}</h4>
