@@ -54,7 +54,9 @@ userRouter.post('/signup', async (req,res)=>
         
       const token= await saveduser.getjwt();
       
-      res.cookie("token",token,{expires: new Date(Date.now()+8*3600000)});
+      res.cookie("token",token,{httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",expires: new Date(Date.now()+8*3600000)});
 
         const userId = user._id;
         const account = new Account({userId,
@@ -90,7 +92,9 @@ userRouter.post('/signin',async(req,res)=>
         if(validpwd)
         {
              const token= await user.getjwt();
-              res.cookie("token",token,{expires: new Date(Date.now()+8*3600000)});
+              res.cookie("token",token,{httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",expires: new Date(Date.now()+8*3600000)});
               res.json({
                  message:"login Successful",
                  user
@@ -110,7 +114,9 @@ userRouter.post('/signin',async(req,res)=>
 userRouter.post('/signout', userauth, async (req, res) => {
     try
     {
-        res.cookie("token","",{httpOnly: true, secure: true, sameSite: "strict", expires: new Date(Date.now())});
+        res.cookie("token","",{httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", expires: new Date(Date.now())});
         res.status(200).json({ message: "User logged out successfully."});
     }
     catch(err)

@@ -27,7 +27,7 @@ const Send = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/v1/account/transfer",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/account/transfer`,
         { toUserId:userId,amount},
         { withCredentials:true}
       );

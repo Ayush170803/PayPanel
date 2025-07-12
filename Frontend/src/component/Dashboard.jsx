@@ -14,7 +14,7 @@ const Dashboard = () => {
     {
       try
       {
-        const res = await axios.get("http://localhost:3000/api/v1/account/balance",{withCredentials:true});
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/account/balance`,{withCredentials:true});
          if (!res || !res.data || res.data.balance == null) {
         setError("Invalid response from server");
         return;
