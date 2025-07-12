@@ -54,7 +54,7 @@ userRouter.post('/signup', async (req,res)=>
         
       const token= await saveduser.getjwt();
       
-      res.cookie("token",token,{expires: new Date(Date.now()+8*3600000)});
+      res.cookie("token",token,{httpOnly: true,secure: true,sameSite: "None",expires: new Date(Date.now()+8*3600000)});
 
         const userId = user._id;
         const account = new Account({userId,
@@ -90,7 +90,7 @@ userRouter.post('/signin',async(req,res)=>
         if(validpwd)
         {
              const token= await user.getjwt();
-              res.cookie("token",token,{expires: new Date(Date.now()+8*3600000)});
+              res.cookie("token",token,{httpOnly: true, secure: true,sameSite: "None", expires: new Date(Date.now()+8*3600000)});
               res.json({
                  message:"login Successful",
                  user
