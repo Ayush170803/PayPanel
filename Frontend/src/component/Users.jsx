@@ -11,10 +11,7 @@ const Users = () => {
      {
         try
         {
-        const res = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/find?filter=${encodeURIComponent(filtervalue)}`,
-          { withCredentials: true }
-        );
+            const res = await axios.get(`http://localhost:3000/api/v1/user/find?filter=${encodeURIComponent(filtervalue)}`,{ withCredentials: true });
             setUsers(res.data.user || []);
         }
         catch(er)

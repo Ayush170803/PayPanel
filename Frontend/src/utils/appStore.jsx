@@ -29,13 +29,10 @@ const loadBalanceFromLocalStorage = () => {
 };
 
 const loadTransactionsFromLocalStorage = () => {
-  try
-  {
-    const data=localStorage.getItem("transactions");
-    return data?JSON.parse(data):[];
-  } 
-  catch(e)
-  {
+  try {
+    const data = localStorage.getItem("transactions");
+    return data ? JSON.parse(data) : [];
+  } catch (e) {
     return [];
   }
 };
@@ -44,7 +41,7 @@ const appStore = configureStore({
      reducer:{
       user:userReducer,
       balance:balanceReducer,
-      transactions:transactionReducer,
+      transactions: transactionReducer,
      },
   preloadedState: {
     user: loadUserFromLocalStorage(), 
