@@ -11,6 +11,8 @@ import Profile from "./component/Profile";
 import ForgotPassword from "./component/ForgotPassword";
 import Transactions from "./component/Transactions";
 import GrafanaDashboard from "./component/GrafanaDashboard";
+import InvoicePage from './component/InvoicePage';
+import SavedInvoices from './component/SavedInvoices';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       <Route path="profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute> }/>
       <Route path="transactions" element={<ProtectedRoute><Transactions/></ProtectedRoute>}/>
       <Route path="/metrics" element={<ProtectedRoute><GrafanaDashboard /></ProtectedRoute>}/>
+      <Route path="/invoice"  element={<ProtectedRoute><InvoicePage /></ProtectedRoute>}/>
+      <Route path="/saved-invoices"  element={<ProtectedRoute><SavedInvoices /></ProtectedRoute>}/>
         </Route>
       </Routes>
       </BrowserRouter>
